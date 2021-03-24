@@ -9,6 +9,7 @@ def VERSION = '2.2.0'
 process HISAT2_ALIGN {
     tag "$meta.id"
     label 'process_high'
+    maxForks 3
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), publish_id:meta.id) }
